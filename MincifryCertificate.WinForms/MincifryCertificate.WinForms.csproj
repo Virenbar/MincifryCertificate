@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>net6.0-windows;net472</TargetFrameworks>
+		<DebugType>embedded</DebugType>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>10</LangVersion>
+		<ApplicationIcon>Resources/Icon.ico</ApplicationIcon>
+		<RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Virenbar/MincifryCertificate</RepositoryUrl>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<DeleteExistingFiles>true</DeleteExistingFiles>
+		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+		<AssemblyName>MincifryCertificate</AssemblyName>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\MincifryCertificate\MincifryCertificate.csproj" />
+		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
+		<Using Remove="System.Net.Http" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="icons8.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>icons8.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="icons8.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>icons8.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+</Project>

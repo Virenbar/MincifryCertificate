@@ -1,0 +1,69 @@
+name: Build Artifact
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "**.md"
+      - ".github/**"
+      - "assets/**"
+  pull_request:
+    branches: [master]
+  workflow_call:
+    outputs:
+      version:
+        description: "Version builded"
+        value: ${{ jobs.build.outputs.version }}
+jobs:
+  build:
+    name: Build
+    strategy:
+      matrix:
+        include:
+          - framework: "net6.0-windows"
+            profile: "net6"
+          - framework: "net472"
+            profile: "net472"
+    runs-on: windows-latest
+    env:
+      DOTNET_NOLOGO: true
+      FRAMEWORK: ${{ matrix.framework }}
+      PROFILE: ${{ matrix.profile }}
+    outputs:
+      version: ${{steps.version.outputs.version}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.x
+
+      - name: Set VERSION
+        id: version
+        run: .\.github\scripts\version.ps1
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: ~\.nuget\packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Build solution
+        run: |
+          dotnet restore --locked-mode
+          dotnet build -c Release
+
+      - name: Build artifact
+        run: dotnet publish -c Release -p:PublishProfile=$env:PROFILE -f $env:FRAMEWORK /property:Version=$env:VERSION
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: MincifryCertificate(${{ matrix.framework }})
+          path: MincifryCertificate.WinForms\publish\${{ matrix.framework }}\**
+          if-no-files-found: error

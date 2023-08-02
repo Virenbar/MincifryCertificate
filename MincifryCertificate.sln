@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MincifryCertificate", "MincifryCertificate\MincifryCertificate.csproj", "{4824B4D6-88EB-428E-B85A-0ADFC10B3339}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MincifryCertificate.WinForms", "MincifryCertificate.WinForms\MincifryCertificate.WinForms.csproj", "{362E93E5-DCE3-4EEE-8AB6-8DFF59B47CAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4824B4D6-88EB-428E-B85A-0ADFC10B3339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4824B4D6-88EB-428E-B85A-0ADFC10B3339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4824B4D6-88EB-428E-B85A-0ADFC10B3339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4824B4D6-88EB-428E-B85A-0ADFC10B3339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362E93E5-DCE3-4EEE-8AB6-8DFF59B47CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362E93E5-DCE3-4EEE-8AB6-8DFF59B47CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362E93E5-DCE3-4EEE-8AB6-8DFF59B47CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362E93E5-DCE3-4EEE-8AB6-8DFF59B47CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9F3DDA3-82F9-4978-B29F-E4C6D507D28E}
+	EndGlobalSection
+EndGlobal
